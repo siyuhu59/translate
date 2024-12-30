@@ -97,7 +97,20 @@
     const subs_click = () => {
         const email = document.querySelector('#email').value;
         console.log(email);
-        alert('구독 신청이 완료되었습니다. 소식을 기다려주세요!');
+        fetch("http://144.24.73.103:8000/email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert("소식을 받으실 이메일을 등록해주셔서 감사합니다. 소식을 기다려주세요!");
+        })
     }
 </script>
 </html>
