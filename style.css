@@ -114,6 +114,7 @@ p {
 
 .subscription-form {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     max-width: 500px;
     margin: 0 auto;
@@ -206,6 +207,7 @@ button:hover {
 /* 기능 소개 섹션 특별 스타일 */
 .features-grid {
     background-color: var(--bg-dark);
+    flex-direction: column;
 }
 
 .feature-card {
@@ -240,11 +242,17 @@ button:hover {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 1rem;
+    font-weight: bold;
 }
 .email-btn:hover {
     background-color: var(--bg-light);
+    
 }
-
+.subs-email {
+    display: flex;
+    height: 60px;
+}
 
 /* 반응형 패딩 조정 */
 @media (max-width: 768px) {
