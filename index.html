@@ -84,7 +84,6 @@
     // document.ready
     window.onload = () => {
         // 방문 기록
-        localStorage.setItem('visited', 'true');
         if (localStorage.getItem('visited') != 'true') {
             fetch("http://144.24.73.103:8000/visit")
             .then(response => response.json())
@@ -92,6 +91,7 @@
                 console.log(data);
             })
         }
+        localStorage.setItem('visited', 'true');
     }
 
 
