@@ -81,6 +81,20 @@
 </body>
 
 <script>
+    // document.ready
+    window.onload = () => {
+        // 방문 기록
+        localStorage.setItem('visited', 'true');
+        if (localStorage.getItem('visited') != 'true') {
+            fetch("http://144.24.73.103:8000/visit")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+    }
+
+
     const button = document.querySelector('#subs-btn');
     console.log(button);
     button.addEventListener('click', () => {
