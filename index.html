@@ -84,13 +84,13 @@
     // document.ready
     window.onload = () => {
         // 방문 기록
-        if (localStorage.getItem('visited') != 'true') {
-            fetch("http://144.24.73.103:8000/visit")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
+        // if (localStorage.getItem('visited') != 'true') {
+        //     fetch("http://144.24.73.103:8000/visit")
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // }
         localStorage.setItem('visited', 'true');
     }
 
@@ -98,6 +98,11 @@
     const button = document.querySelector('#subs-btn');
     console.log(button);
     button.addEventListener('click', () => {
+        fetch("http://144.24.73.103:8000/visit")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
         const subscription = document.querySelector('.subscription-form');
         subscription.innerHTML = `
             <p>현재 서비스는 준비중입니다. 조금만 기다려주세요! 소식을 받으시려면, 아래 이메일을 입력해주세요.</p>
