@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>보자 - 실시간 자막 서비스</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2VCMGB7MC"></script>
     <script>
@@ -25,13 +25,13 @@
                 <button class="cta-button">시작하기</button>
             </div>
             <div class="image">
-                <img src="image/main.png" alt="video streaming illustration">
+                <img src="./image/main.png" alt="video streaming illustration">
             </div>
         </section>
 
         <section class="features">
             <div class="image">
-                <img src="image/1.png" alt="video streaming illustration">
+                <img src="./image/1.png" alt="video streaming illustration">
             </div>
             <div class="content">
                 <h2>들어가도 들리지 않아 얼굴만 쳐다보던 나날들</h2>
@@ -48,14 +48,14 @@
             <div class="features-container">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="image/1.png" alt="실시간 자막">
+                        <img src="./image/1.png" alt="실시간 자막">
                     </div>
                     <h3>실시간 자막</h3>
                     <p>라이브 방송 중에도 자막을 통해 영상을 이해할 수 있습니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="image/realtime.png" alt="자막 다시보기">
+                        <img src="./image/realtime.png" alt="자막 다시보기">
                     </div>
                     <h3>자막 다시보기</h3>
                     <p>자막을 통해 영상을 이해하지 못했을 때, 다시보기를 통해 문맥을 이해할 수 있습니다.</p>
@@ -99,7 +99,7 @@
     const button = document.querySelector('#subs-btn');
     console.log(button);
     button.addEventListener('click', () => {
-        fetch("//144.24.73.103:8000/visit")
+        fetch("http://144.24.73.103:8000/visit")
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -117,7 +117,7 @@
     const subs_click = () => {
         const email = document.querySelector('#email').value;
         console.log(email);
-        fetch("//144.24.73.103:8000/email", {
+        fetch("http://144.24.73.103:8000/email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
