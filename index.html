@@ -99,7 +99,7 @@
     const button = document.querySelector('#subs-btn');
     console.log(button);
     button.addEventListener('click', () => {
-        fetch("http://144.24.73.103:8000/visit")
+        fetch("https://144.24.73.103/visit")
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -117,7 +117,7 @@
     const subs_click = () => {
         const email = document.querySelector('#email').value;
         console.log(email);
-        fetch("http://144.24.73.103:8000/email", {
+        fetch("https://144.24.73.103/email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
