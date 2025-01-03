@@ -20,8 +20,8 @@
     <main>
         <section class="hero">
             <div class="content">
-                <h1>아카이브.. 키리누키.. 매번 기다리시나요?</h1>
-                <p>청해가 안되서 아카이브 데워먹고, 키리누키만 찾아다니던 일상. 실시간 자막을 통해 라이브 시청기회!</p>
+                <h1 class="text">아카이브.. 키리누키.. 매번 기다리시나요?</h1>
+                <p class="text">청해가 안되서 아카이브 데워먹고, 키리누키만 찾아다니던 일상. 실시간 자막을 통해 라이브 시청기회!</p>
                 <a href="#second"><button class="cta-button">시작하기</button></a>
             </div>
             <div class="image">
@@ -34,31 +34,31 @@
                 <img src="./image/1.png" alt="video streaming illustration">
             </div>
             <div class="content">
-                <h2>들어가도 들리지 않아 얼굴만 쳐다보던 나날들</h2>
-                <p>이제는 말소리까지 놓치지 마세요. 언어 장벽 때문에 버튜버의 생생한 웃음 포인트를 놓치고 있었다면, 지금부터는 자막으로 제대로 즐겨보세요!</p>
+                <h2 class="text">들어가도 들리지 않아 얼굴만 쳐다보던 나날들</h2>
+                <p class="text">이제는 말소리까지 놓치지 마세요. 언어 장벽 때문에 버튜버의 생생한 웃음 포인트를 놓치고 있었다면, 지금부터는 자막으로 제대로 즐겨보세요!</p>
                 <ul class="feature-list">
-                    <li>버튜버 내 사용되는 은어, 의성어도 완벽 번역</li>
-                    <li>놓치더라도 자막 다시보기로 문맥 이해</li>
+                    <li class="text">버튜버 내 사용되는 은어, 의성어도 완벽 번역</li>
+                    <li class="text">놓치더라도 자막 다시보기로 문맥 이해</li>
                     <!-- <li>자주 사용되는 단어, 표현은 따로 모아 학습</li> -->
                 </ul>
             </div>
         </section>
         <section class="features-grid">
-            <h2>기능 소개</h2>
+            <h2 class="text">기능 소개</h2>
             <div class="features-container">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="./image/1.png" alt="실시간 자막">
                     </div>
-                    <h3>실시간 자막</h3>
-                    <p>라이브 방송 중에도 자막을 통해 영상을 이해할 수 있습니다.</p>
+                    <h3 class="text">실시간 자막</h3>
+                    <p class="text">라이브 방송 중에도 자막을 통해 영상을 이해할 수 있습니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="./image/realtime.png" alt="자막 다시보기">
                     </div>
-                    <h3>자막 다시보기</h3>
-                    <p>자막을 통해 영상을 이해하지 못했을 때, 다시보기를 통해 문맥을 이해할 수 있습니다.</p>
+                    <h3 class="text">자막 다시보기</h3>
+                    <p class="text">자막을 통해 영상을 이해하지 못했을 때, 다시보기를 통해 문맥을 이해할 수 있습니다.</p>
                 </div>
                 <!-- <div class="feature-card">
                     <div class="feature-icon">
@@ -72,10 +72,10 @@
         
 
         <section class="subscription">
-            <h2>라이브도 무리없이! 실시간 자막서비스 구독하기</h2>
-            <p>실시간 자막 서비스를 통해 라이브 방송을 더욱 즐겁게 즐기세요!</p>
+            <h2 class="text">라이브도 무리없이! 실시간 자막서비스 구독하기</h2>
+            <p class="text">실시간 자막 서비스를 통해 라이브 방송을 더욱 즐겁게 즐기세요!</p>
             <div class="subscription-form">
-                <button class="subscribe-button" id="subs-btn">5,900원/월에 이용하기</button>
+                <button class="subscribe-button text" id="subs-btn">5,900원/월에 이용하기</button>
             </div>
         </section>
     </main>
@@ -105,6 +105,16 @@
                 console.log(data);
             })
         const subscription = document.querySelector('.subscription-form');
+        if (localStorage.getItem('isUS') == 'true'){
+            subscription.innerHTML = `
+                <p>The service is currently under preparation. Please wait a little! To receive news, please enter your email below.</p>
+                <div class="subs-email">
+                <input type="email" id="email" placeholder="Please enter your email">
+                <button class="email-btn" onclick="subs_click()">Subscribe</button>
+                </div>
+            `;
+            return;
+        }
         subscription.innerHTML = `
             <p>현재 서비스는 준비중입니다. 조금만 기다려주세요! 소식을 받으시려면, 아래 이메일을 입력해주세요.</p>
             <div class="subs-email">
@@ -129,8 +139,14 @@
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            alert("소식을 받으실 이메일을 등록해주셔서 감사합니다. 소식을 기다려주세요!");
+            if (localStorage.getItem('isUS') == 'true'){
+                alert("Thank you for registering your email to receive news. Please wait for the news!");
+            }
+            else{
+                alert("소식을 받으실 이메일을 등록해주셔서 감사합니다. 소식을 기다려주세요!");
+            }
         })
     }
 </script>
+<script src="./script.js"></script>
 </html>
